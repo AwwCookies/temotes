@@ -101,8 +101,12 @@ func (t SevenTvFetcher) FetchChannelEmotes(id temotes.TwitchUserId) []temotes.Em
 		log.Fatal(jsonErr)
 	}
 
-	activeEmoteSetId := parsedResponse.Data.UserByConnection.Connections[0].EmoteSetID
-
+	var activeEmoteSetId string
+	if len(parsedResponse.Data.UserByConnection.Connections) > 0 {
+		activeEmoteSetId = parsedResponse.Data.UserByConnection.Connections[0].EmoteSetID
+	} else {
+		return emotes
+	}
 	for _, emoteSet := range parsedResponse.Data.UserByConnection.EmoteSets {
 		if emoteSet.Id != activeEmoteSetId {
 			continue
