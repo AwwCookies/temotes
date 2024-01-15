@@ -12,23 +12,29 @@ We support:
 
 ## Setup
 
-> Note: _Keep in mind that you don't need to install anything if you just want to consume the API._
-> 
-> You can use the public API that we expose on [emotes.adamcy.pl](https://adiq.stoplight.io/docs/temotes/YXBpOjMyNjU2ODIx-t-emotes-api)
-
 ### Requirements
 
 * Golang
-* Redis
 * Twitch API Access (Client ID and Client Secret)
 
-### Configure
+### Setup
 
-Configuration is as easy as defining the environment variables from the `.env` file.
+1. **Install Golang:** The application is written in Go, so you need to have Go installed on your machine. You can download it from the [official Go website](https://golang.org/dl/).
 
-### Run & Build
+2. **Get Twitch API Access:** You need to have a Twitch API Client ID and Client Secret. You can get these by creating a new application in the [Twitch Developer Console](https://dev.twitch.tv/console).
 
-Running and building the application is as simple as in any other Go project.
+3. **Configure Environment Variables:** Rename the `.env.example` file to `.env` in the root directory of the project and fill out the necessary environment variables. The exact variables you need to define will depend on the application, but they will likely include your Twitch API Client ID and Client Secret.
+
+4. **Build and Run the Application:** Navigate to the root directory of the project in your terminal and run the following command to build and run the application:
+
+    ```sh
+    go run .
+    ```
+
+    This command will compile the Go code and start the application. If the application starts successfully, you should see output in your terminal indicating that the server is running.
+
+    Remember to replace the placeholders in the `.env` file with your actual Twitch API Client ID and Client Secret.
+
 
 # License
 
