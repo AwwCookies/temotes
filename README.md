@@ -2,7 +2,7 @@
  
 Easy to use API for Twitch emotes
 
-[![Documentation](https://img.shields.io/badge/docs-see_how_to_use-brightgreen?style=for-the-badge&logo=readthedocs)](https://adiq.stoplight.io/docs/temotes/YXBpOjMyNjU2ODIx-t-emotes-api)
+[![Documentation](https://img.shields.io/badge/docs-see_how_to_use-brightgreen?style=for-the-badge&logo=readthedocs)](https://aww.stoplight.io/docs/temotes/)
 
 We support:
 * Twitch
