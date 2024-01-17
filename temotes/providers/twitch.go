@@ -191,12 +191,14 @@ func (t TwitchFetcher) FetchUserIdentifiers(identifier string) (*TwitchUser, err
 	var request *http.Request
 	var cacheKey string
 
-	if id == 0 || err != nil {
-		request = getAuthorizedRequest(fmt.Sprintf("https://api.twitch.tv/helix/users?login=%s", identifier))
-		cacheKey = fmt.Sprintf("twitch-user-identifiers-login-%s", identifier)
-	} else {
+	request = getAuthorizedRequest(fmt.Sprintf("https://api.twitch.tv/helix/users?login=%s", identifier))
+	cacheKey = fmt.Sprintf("twitch-user-identifiers-id-%d", id)
+
+	client := &http.Client{}
+	resp, err := client.Do(request)
+	if err != nil || resp.StatusCode != http.StatusOK {
 		request = getAuthorizedRequest(fmt.Sprintf("https://api.twitch.tv/helix/users?id=%d", id))
-		cacheKey = fmt.Sprintf("twitch-user-identifiers-id-%d", id)
+		cacheKey = fmt.Sprintf("twitch-user-identifiers-login-%s", identifier)
 	}
 
 	response, err := temotes.CachedFetcher{}.FetchDataRequest(request, temotes.TwitchIdTtl, cacheKey)
